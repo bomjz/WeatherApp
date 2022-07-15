@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import org.json.JSONObject
 import tech.edem.weatherapp.databinding.ActivityMainBinding
 
 const val API_KEY = "34b77c533c454fe386c160221221507"
@@ -32,7 +33,9 @@ class MainActivity : AppCompatActivity() {
         val stringRequest = StringRequest(Request.Method.GET,
             url,
             { response ->
-                Log.d("MyLog", "Response: $response")
+                val obj = JSONObject(response)
+                val temp = obj.getJSONObject("current")
+                Log.d("MyLog", "Response: ${temp.getString("temp_c")}")
 
             },
             {

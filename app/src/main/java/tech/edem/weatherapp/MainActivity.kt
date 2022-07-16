@@ -8,6 +8,7 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import org.json.JSONObject
 import tech.edem.weatherapp.databinding.ActivityMainBinding
+import tech.edem.weatherapp.fragments.MainFragment
 
 const val API_KEY = "34b77c533c454fe386c160221221507"
 
@@ -22,6 +23,11 @@ class MainActivity : AppCompatActivity() {
         binding.bGet.setOnClickListener { }
 
         getResult("London")
+
+        supportFragmentManager.
+        beginTransaction().
+        replace(R.id.placeHolder, MainFragment.newInstance()).
+        commit()
 
     }
 
